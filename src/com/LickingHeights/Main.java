@@ -5,80 +5,54 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-	// declare
-        Scanner input = new  Scanner(System.in);
+        // declare
+        Scanner input = new Scanner(System.in);
         //initializing
         System.out.println("give me Your exact birthday starting with the\n Day");
         int h = input.nextInt();
         int q;
-        do { System.out.println("\n Month");
+        do {
+            System.out.println("\n Month");
             q = input.nextInt();
-        } while (q<1|| q>12);
+        } while (q < 1 || q > 12);
         System.out.println("\n the year ");
         int k = input.nextInt();
-        int j = k/100;
-        System.out.println("Day:"+h+"Month:"+q+"Year:"+k+" ");
-        Month(q);
+        int j = k / 100;
+        System.out.println("Day:" + h + "Month:" + q + "Year:" + k + " ");
+        String WordMonth = Month(q);
+        System.out.println(WordMonth+" is the Month you were Born");
     }
-    public static void Month(int q ) {
-        //Declare
-        String J,F,M,A,Ma,Jn,Jy,Au,S,N,O,D;
-        //initialize
-        J  = "January";
-        F  = "February";
-        M  = "March";
-        A  = "April";
-        Ma = "May";
-        Jn = "June";
-        Jy = "July";
-        Au = "August";
-        S  = "September";
-        N  = "November";
-        O  = "October";
-        D  = "December";
 
-
-
-        switch (q){
+    public static String Month(int q) {
+        switch (q) {
             case 1:
-                System.out.println(J);
-                break;
+                return "January";
             case 2:
-                System.out.println(F);
-                break;
+               return "February";
             case 3:
-                System.out.println(M);
-                break;
+               return "March";
             case 4:
-                System.out.println(A);
-                break;
+                return "April";
             case 5:
-                System.out.println(Ma);
-                break;
+                return "May";
             case 6:
-                System.out.println(Jn);
-                break;
+                return "June";
             case 7:
-                System.out.println(Jy);
-                break;
+                return "July";
             case 8:
-                System.out.println(Au);
-                break;
+                return "August";
             case 9:
-                System.out.println(S);
-                break;
+                return "September";
             case 10:
-                System.out.println(N);
-                break;
+                return "November";
             case 11:
-                System.out.println(O);
-
-            break;
+                return "October";
             case 12:
-                System.out.println(D);
-                default:
+                return "December";
+         default:
+                return "unknown";
 
-            }
+        }
 
 
     }
