@@ -13,31 +13,67 @@ public class Main {
         int theMonth;//The Word Form of the Month
         Scanner input = new Scanner(System.in);
         //initializing
-        System.out.println("give me Your exact birthday starting with the\n Day");
-        q = input.nextInt();
+        System.out.println("Monday's child is fair of face,\n" + "Tuesday's child is full of grace,\n" + "Wednesday's child is full of woe,\n" + "Thursday's child has far to go.\n" + "Friday's child is loving and giving,\n" + "Saturday's child works hard for a living,\n" + "But the child born on the Sabbath Day,\n" + "Is fair and wise and good in every way.\n");
+        do {System.out.println("Give me Your exact birthday starting with the\n");
+        System.out.println("Day");
+            q = input.nextInt();
+        }while (q <1 || q > 31);
 
         do { System.out.println("\n Month");
             theMonth = input.nextInt();
         } while (theMonth < 1 || theMonth > 12);
 
-        System.out.println("\n the year ");
-        K = input.nextInt();
+        do {
+            System.out.println("\n The Year ");
+            K = input.nextInt();
+        }while (K <999 || K > 9999);
 
-        J = K/100;
-
-        System.out.println("Day:" + q + "Month:" + theMonth + "Year:" + K + " ");
+        //System.out.println("Day:" + q + "Month:" + theMonth + "Year:" + K + " ");
 
         String WordMonth = Month(theMonth);
-        System.out.println(WordMonth+" is the Month, you were Born in "+K+" ");
+        System.out.println("you were Born "+WordMonth+" "+q+" "+K);
 
-       int m = NumMonth(theMonth);//the Number form of the month
 
-        K =K%100;
-       h = (q + (13*(m+1))/5 + K + K/4 + J/4 +5*J)%7;
-       System.out.println(h);
+        h = birthDayOfWeek(q, theMonth, K);
+
        theday(h);
-      String Day = theday(h);
-              System.out.println("you were born a "+Day+" ");
+       String Day = theday(h);
+       System.out.println("you were born on a "+Day+" ");
+
+              NurseryRhyme(h);
+        String Rhyme = NurseryRhyme(h);
+              System.out.println(Rhyme);
+    }
+
+    public static String NurseryRhyme(int h) {
+       switch(h){
+           case 0:
+               return"According to the nursery Rhyme you are Handsome " ;
+           case 1:
+               return"According to the nursery Rhyme you are Very graceful" ;
+           case 2:
+               return"According to the nursery Rhyme you are Gloomy" ;
+           case 3:
+               return"According to the nursery Rhyme you are still Growing" ;
+           case 4:
+               return"According to the nursery Rhyme you are Kind" ;
+           case 5:
+               return"According to the nursery Rhyme you are a Hard worker" ;
+           case 6:
+               return"According to the nursery Rhyme you are Amazing!" ;
+       }
+
+        return null;
+    }
+
+    public static int birthDayOfWeek (int day, int month, int year){
+        if(month <=2){
+            month = NumMonth(month);
+            year --;
+        }
+        int J = year/100;
+        int K =year%100;
+        return (day + (13*(month+1))/5 + K + K/4 + J/4 +5*J)%7;
     }
 
     public static String theday(int h) {
