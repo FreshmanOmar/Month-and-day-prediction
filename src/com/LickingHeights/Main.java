@@ -9,57 +9,63 @@ public class Main {
         int h;//The Day of the week
         int q;//The Day of the Month
         int K;//The Year of the century
-        int J;//The Zero based century
+        //int J;//The Zero based century
         int theMonth;//The Word Form of the Month
         Scanner input = new Scanner(System.in);
         //initializing
         System.out.println("Monday's child is fair of face,\n" + "Tuesday's child is full of grace,\n" + "Wednesday's child is full of woe,\n" + "Thursday's child has far to go.\n" + "Friday's child is loving and giving,\n" + "Saturday's child works hard for a living,\n" + "But the child born on the Sabbath Day,\n" + "Is fair and wise and good in every way.\n");
-        do {System.out.println("Give me Your exact birthday starting with the\n");
-        System.out.println("Day");
+        do {
+            System.out.println("Give me Your exact birthday starting with the\n");
+            System.out.println("Day");
             q = input.nextInt();
-        }while (q <1 || q > 31);
+        } while (q < 1 || q > 31);
 
-        do { System.out.println("\n Month");
+        do {
+            System.out.println("\n Month");
             theMonth = input.nextInt();
         } while (theMonth < 1 || theMonth > 12);
 
         do {
             System.out.println("\n The Year ");
             K = input.nextInt();
-        }while (K <999 || K > 9999);
+        } while (K < 999 || K > 9999);
 
         //System.out.println("Day:" + q + "Month:" + theMonth + "Year:" + K + " ");
 
+        int DaysInMon = DaysInTheMonth(theMonth, K);
+        System.out.println(DaysInMon);
+
         String WordMonth = Month(theMonth);
-        System.out.println("you were Born "+WordMonth+" "+q+" "+K);
+        System.out.println("There are " + DaysInMon + " days in " + WordMonth + " of "+K+" ");
+        System.out.println("you were Born " + WordMonth + " " + q + " " + K);
 
 
         h = birthDayOfWeek(q, theMonth, K);
 
-       theday(h);
-       String Day = theday(h);
-       System.out.println("you were born on a "+Day+" ");
+        theday(h);
+        String Day = theday(h);
+        System.out.println("you were born on a " + Day + " ");
 
-              NurseryRhyme(h);
+        NurseryRhyme(h);
         String Rhyme = NurseryRhyme(h);
-              System.out.println(Rhyme);
-    }
+        System.out.println(Rhyme);
 
+    }
     public static String NurseryRhyme(int h) {
        switch(h){
-           case 0:
-               return"According to the nursery Rhyme you are Handsome " ;
-           case 1:
-               return"According to the nursery Rhyme you are Very graceful" ;
            case 2:
-               return"According to the nursery Rhyme you are Gloomy" ;
+               return"According to the nursery Rhyme you are Handsome " ;
            case 3:
-               return"According to the nursery Rhyme you are still Growing" ;
+               return"According to the nursery Rhyme you are Very graceful" ;
            case 4:
-               return"According to the nursery Rhyme you are Kind" ;
+               return"According to the nursery Rhyme you are Gloomy" ;
            case 5:
-               return"According to the nursery Rhyme you are a Hard worker" ;
+               return"According to the nursery Rhyme you are still Growing" ;
            case 6:
+               return"According to the nursery Rhyme you are Kind" ;
+           case 0:
+               return"According to the nursery Rhyme you are a Hard worker" ;
+           case 1:
                return"According to the nursery Rhyme you are Amazing!" ;
        }
 
@@ -95,36 +101,31 @@ public class Main {
                 }
         return null;
     }
-    public static int NumMonth(int theMonth) {
-        switch (theMonth) {
-            case 1:
-                return 13;
-            case 2:
-               return 14;
-            case 3:
-               return 3;
-            case 4:
-                return 4;
-            case 5:
-                return 5;
-            case 6:
-                return 6;
-            case 7:
-                return 7;
-            case 8:
-                return 8;
-            case 9:
-                return 9;
-            case 10:
-                return 10;
-            case 11:
-                return 11;
-            case 12:
-                return 12;
-         default:
-                return 0; }
+    public static int DaysInTheMonth(int theMonth , int year ) {
 
-    }
+        switch (theMonth) {
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                return 30;
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                return 31;
+            case 2:
+                if(year % 4 == 0){
+                    if(year % 100 == 0){
+                        if(year % 400 == 0){
+                               return  29;
+                            }else{return 28;}
+                        }else{return 28;}
+                    }else{return 28;}
+                    } return year;}
 
     public static String Month(int theMonth) {
         switch (theMonth) {
@@ -156,8 +157,38 @@ public class Main {
                 return "unknown"; }
 
     }
+                public static int NumMonth(int theMonth) {
+            switch (theMonth) {
+                case 1:
+                    return 13;
+                case 2:
+                    return 14;
+                case 3:
+                    return 3;
+                case 4:
+                    return 4;
+                case 5:
+                    return 5;
+                case 6:
+                    return 6;
+                case 7:
+                    return 7;
+                case 8:
+                    return 8;
+                case 9:
+                    return 9;
+                case 10:
+                    return 10;
+                case 11:
+                    return 11;
+                case 12:
+                    return 12;
+                default:
+                    return 0; }
 
+        }
 
+    }
 
 
 
@@ -232,4 +263,5 @@ public class Main {
 
 
 
-}
+
+
